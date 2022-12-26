@@ -1,0 +1,37 @@
+{
+  "name": "ckan-cypress-axe",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datopian/ckan-cypress-axe.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "node test",
+    "cy:cache:list": "cypress cache list",
+    "cy:info": "cypress info",
+    "cy:version": "cypress version",
+    "cy:verify": "cypress verify",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
+  },
+  "author": "Datopian",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^5.0.0",
+    "cypress-tests": "git+https://github.com/datopian/ckan-integration-tests.git",
+    "dotenv": "^8.2.0",
+    "mochawesome": "^7.1.3"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/viderum/cloud-us-ed-testing/issues"
+  },
+  "homepage": "https://gitlab.com/viderum/cloud-us-ed-testing#readme",
+  "dependencies": {
+    "axe-core": "^4.5.2",
+    "cypress-axe": "^0.14.0",
+    "cypress-file-upload": "^5.0.7"
+  }
+}
