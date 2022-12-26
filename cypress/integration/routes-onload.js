@@ -9,6 +9,8 @@ const datasetName =
   Math.random().toString(36).slice(2) + Cypress.env("DATASET_NAME_SUFFIX");
 const resourceName =
   Math.random().toString(36).slice(2) + Cypress.env("RESOURCE_NAME_SUFFIX");
+const groupName =
+  Math.random().toString(36).slice(2) + Cypress.env("GROUP_NAME_SUFFIX");
 
 
 const replacements = {
@@ -21,6 +23,9 @@ const replacements = {
   dataset: {
     id: datasetName,
     resource_id: "<resource_id>"
+  },
+  group: {
+    id: groupName,
   },
 };
 
@@ -43,7 +48,14 @@ describe("Pages meet the accessibility requirements onload ", () => {
     cy.createOrganizationAPI(organizationName);
     cy.createDatasetAPI(organizationName, datasetName, true);
     cy.createResourceAPI(datasetName, resourceName);
+    cy.createGroupAPI(groupName);
     cy.login(ckanUserName, ckanPassword)
+
+    cy.visit(`/dataset/resources/${datasetName}`);
+    cy.get('.resource-item a').invoke('attr', 'href').then(href => {
+      replacements.dataset.resource_id = href.split('/').at(-1);
+    })
+
   });
 
   beforeEach(() => {
@@ -61,5 +73,6 @@ describe("Pages meet the accessibility requirements onload ", () => {
   after(() => {
     cy.deleteDatasetAPI(datasetName);
     cy.deleteOrganizationAPI(organizationName);
+    cy.deleteGroupAPI(groupName);
   });
 });

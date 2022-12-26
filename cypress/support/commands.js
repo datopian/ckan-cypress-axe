@@ -1,5 +1,34 @@
 import "cypress-axe";
 
+const headers = { Authorization: Cypress.env('API_KEY') }
+const apiUrl = (path) => {
+  return `${Cypress.config().baseUrl}api/3/action/${path}`
+}
+
+Cypress.Commands.add('createGroupAPI', (name) => {
+  //  TODO: this should be extracted to CKAN Integration Tests repo
+  cy.request({
+    method: 'POST',
+    url: apiUrl('group_create'),
+    headers: headers,
+    body: {
+      name
+    },
+  })
+})
+
+Cypress.Commands.add('deleteGroupAPI', (name) => {
+  //  TODO: this should be extracted to CKAN Integration Tests repo
+  cy.request({
+    method: 'POST',
+    url: apiUrl('group_delete'),
+    headers: headers,
+    body: {
+      id: name
+    },
+  })
+})
+
 function printAccessibilityViolations(violations) {
   cy.task(
     "table",
