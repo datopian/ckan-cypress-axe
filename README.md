@@ -163,13 +163,13 @@ This function is going to add a basic on load test for common CKAN routes. The d
   
 If your CKAN instance contains extensions and customizations and/or has non-default routes it's recommended to write your own routes on load test.
   
-You can do that based on [this test spec]().
+You can do that based on [this test spec](https://github.com/datopian/ckan-cypress-axe/blob/main/cypress/integration/routes-onload.js).
 
 
 #### How to map the routes on your CKAN instance
 There are multiple ways of mapping the routes of your instance to use it on your routes on load test spec. 
 
-The most simple way would be starting from the [basic routes.json file]() and adding the new routes manually.
+The most simple way would be starting from the [basic routes.json file](https://github.com/datopian/ckan-cypress-axe/blob/main/routes.json) and adding the new routes manually.
   
 However, if your instance has many custom routes, consider adding and running the following command:
 ```
